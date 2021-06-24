@@ -1,0 +1,21 @@
+setcps 0.612
+
+no = "g"
+qu = ""
+
+qu = "min"
+
+ch = "g'9'5 g''5 g'7'5 g'6'5 ~"
+
+ch = "g'min9'5 g'min'5 g'min7'5 g'min6'5 ~"
+
+--                  1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4
+d1 $ loopAt 2 $ n ("~ 0 0 ~ 0 0 ~ 0 0 ~ 0 0 ~ ~ ~ ~" |+ (chords + "0")) 
+  # s "supermandolin" 
+  # gain 0.7
+
+d2 $ s "click:3"
+
+d3 $ loopAt 0.5 $ s "bd ~ hh bd"
+
+hush
