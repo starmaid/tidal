@@ -1,0 +1,67 @@
+
+
+
+-- deadmau5 - mercedes
+
+setcps(-1)
+
+setcps(130/60/4)
+
+chords = "<cs5'min'6 a5'maj'6 a5'maj'6 cs5'min'6 b4'maj'6 d5'maj'6 cs5'min'6 cs5'min'6>"
+
+d1 $ loopAt 2 
+  $ timeCat [(30, bite 6 "[0 0 2 0 3 5]!5" $ n (arp "up" chords)),
+             (2, bite 6 "2 1" $ n (arp "up" chords))]
+  # s "supersquare"
+  # voice 0.4
+  # decay 0.5
+  # attack 0.1
+  # hold 0.1
+  # resonance 0.1
+  # lfo 1
+  # rate 8
+  # pitch1 8
+  # gain (0.8 + 0.2 * (fast 8 saw))
+  # lpf 2000
+  # lpq 0
+  # room 0.4
+
+arplow = "<cs5 a4 fs4 cs5 b4 d5 cs5 cs5>"
+
+-- low part of arpeg
+d2 $ loopAt 2 $ timeCat [(30, n ("[0 ~ ~ 0 ~ ~]!5" |+ arplow)),
+                         (2, n ("0 0" |+ arplow - "12"))]
+  # s "supersquare"
+  # voice 0.43
+  # attack 0.1
+  # hold 0.4
+  # gain 0.9
+  # lpf 2000
+  # lpq 0
+
+-- drums
+d3 $ s "[bd:1 sn:23]!2"
+  # lpf 2500
+  # room 0.3
+  # hold 3
+  # krush 1.5
+
+-- bass
+d4 $ loopAt 2 $ n ("[0 0]!16" |+ "<cs4 a4 fs4 cs4 b4 d4 cs4 cs4>" - "12")
+  # s "supersquare"
+  # gain (0.5 + 0.6 * (fast 8 saw))
+  # voice 0.45
+
+-- "melody" line ig
+d5 $ loopAt 2 $ n ("<f5 fs5 ds5 f5 cs5 e5 ds5 ds5>") 
+  # s "supersaw"
+  # voice 0.01
+  # attack 0.05
+  # hold 20
+  # resonance 0.01
+  # rate 0
+  # room 0.1
+  # size 0.5
+  # gain 0.8
+
+hush

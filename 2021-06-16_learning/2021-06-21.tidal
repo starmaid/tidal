@@ -1,0 +1,83 @@
+setcps (90/60/4)
+
+n "a'maj"
+
+n "[0 7 12 19]!3 [2]"
+
+
+d3 $ s "[bd sn bd sn]!2"
+
+setcps(0.26)
+
+hush
+
+-- beats            1       2       3       4       1       2       3       4     
+-- reps             1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4
+d1 $ n ("<cs4 a4 fs4 cs5 b4 d4 cs5 cs4>" +| "0 ~ ~ 0 ~ ~ 0 ~ ~ 0 ~ ~ 0 ~ ~ 0 ~ ~ 0 ~ ~ 0 ~ ~ 0 ~ ~ 0 ~ ~ 0 0" - "12")
+  # s "supersquare"
+  # gain "0.8"
+  # lpf 1000 
+
+-- reps                  1             2             3             4             5 
+-- beats                 1       2       3       4       1       2       3       4     
+-- sixteenths                                      1 2 3 4 1  2  3 4 1 2 3  4  1 2 3 4 1  2  3 4 1 2 3  4  1 2 3 4 1  2  3 4           
+d2 $ n (arpg "<cs5 fs5 fs5 cs5 b4 d5 cs5 cs5>" +| "0 0 7 0 12 19 0 0 7 0 12 19 0 0 7 0 12 19 0 0 7 0 12 19 0 0 7 0 12 19 7 3")
+  # s "supersquare"
+  # gain "0.8"
+  # lpf 800
+
+d2 $ loopAt 4 $ fastcat [n (arpg "<cs5>" +| "3 0 "]
+
+hush
+
+n ("0 0 7 3" + "1")
+
+setcps(0.5)
+
+
+-- the Mercedes pattern
+-- "<cs5 a4 a4/fs4 cs5 >"
+-- "<b4 d5 cs5 cs5>"
+
+setcps(0.3)
+
+d1 $ n (arp "up" "<cs5'min'6 a5'maj'6 a5'maj'6 cs5'min'6>!5")
+  # s "supersquare"
+  # gain "0.6"
+
+d1 $ n (arp "up" "<b4'maj'6 d5'maj'6 cs5'min'6 cs5'min'6>!5")
+  # s "supersquare"
+  # gain "0.6"
+
+hush
+
+
+-- learning how to arp and cat
+d1 $ n (arp "<up>" ("<cs5 a4 a4_f4 gs4>" |+ "<'min>")) 
+  # s "supersquare"
+
+
+d1 $ timeCat [(4, n (arp "up" "cs5'min'4")),
+              (1, n "1")]
+  # s "supersquare"
+  # gain 0.6
+
+
+-- learning how to bite
+
+setcps(0.3)
+
+d1 $ n "0 .. 15" # s "supersquare" # gain "0.6"
+
+d1 $ bite 16 "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15" $ n "0 .. 15" # s "supersquare" # gain "0.6"
+
+
+
+hush
+
+
+d1 $ bite 4 "0 1*2 2*2 [~ 3]" $ n "0 .. 7" # sound "drum"
+
+d1 $ chew 4 "0 1*2 2*2 [~ 3]" $ n "0 .. 7" # sound "drum"
+
+
