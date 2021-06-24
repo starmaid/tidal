@@ -5,14 +5,37 @@ qu = ""
 
 qu = "min"
 
+
+-- these are just all the chords
 ch = "g'9'5 g''5 g'7'5 g'6'5 ~"
 
-ch = "g'min9'5 g'min'5 g'min7'5 g'min6'5 ~"
+ch = "c'9'5 c''5 c'7'5 c'6'5 ~"
+
+ch = "c'm9'5 c'm'5 c'min7'5 c'min6'5 ~"
+
+ch = "b'm7'5 bf'dim'5 a'm7'5 af'dim'5"
+
+ch = "a'm9'5 af'9'5 g'9'5"
+
+ch = "gf'm7'5 Gbdim7"
+
+ch = "e'add9'5 e''5 e'7'5 e'6'5"
+
+ch = "Emin9 Emin Emin7 Emin6"
+
+ch = "Dmaj7 D Ebmin7b5 B7"
+
+ch = "E Cdim Bmin7 E7"
+
+ch = "Amaj9 Amin9 Amin6add9"
+
 
 --                  1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4
 d1 $ loopAt 2 $ n ("~ 0 0 ~ 0 0 ~ 0 0 ~ 0 0 ~ ~ ~ ~" |+ (chords + "0")) 
   # s "supermandolin" 
   # gain 0.7
+
+-- hey check out using |> to take values from the right
 
 d2 $ s "click:3"
 
