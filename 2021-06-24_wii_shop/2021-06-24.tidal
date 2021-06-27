@@ -7,7 +7,7 @@ qu = "min"
 
 
 -- these are just all the chords
-ch = "g'9'5 g''5 g'7'5 g'6'5 ~"
+ch = "g'maj9'5 g'maj'4 g'maj7'5 g'6'5 ~"
 
 ch = "c'9'5 c''5 c'7'5 c'6'5 ~"
 
@@ -29,16 +29,31 @@ ch = "E Cdim Bmin7 E7"
 
 ch = "Amaj9 Amin9 Amin6add9"
 
+setcps(-1)
+
+setcps "0.6"
+
+resetCycles
 
 --                  1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4
-d1 $ loopAt 2 $ n ("~ 0 0 ~ 0 0 ~ 0 0 ~ 0 0 ~ ~ ~ ~" |+ (chords + "0")) 
+d1 $ loopAt 2 $ n ("~ 0 0 ~ 0 0 ~ 0 0 ~ 0 0 ~ ~ ~ ~" |+ (ch + "0")) 
   # s "supermandolin" 
-  # gain 0.7
+  # gain 0.8
+
+
+-- bass
+d4 $ n ("0 ~ ~ 0 -5 ~ ~ -5" |+ "g3")
+  # s "supersaw"
+  # voice 0.4
+
+hush
+
 
 -- hey check out using |> to take values from the right
 
 d2 $ s "click:3"
 
 d3 $ loopAt 0.5 $ s "bd ~ hh bd"
+  # gain 1.5
 
 hush
